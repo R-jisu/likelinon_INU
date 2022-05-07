@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>숫자야구게임</title>
+        <link rel="stylesheet" href="numberbaseball.css">
+
+    </head>
+
+    <body>
+        <h1 id="info">랜덤 번호 4자리가 생성되었습니다. (범위 0~9)</h1>
+        <form action="">
+            <input type="text" id="myanswer" onkeyup="answer();">
+        </form>
+
+        <div class="wrap">
+            <div class='ball ball1' id="b1">?</div>
+            <div class='ball ball2' id="b2">?</div>
+            <div class='ball ball3' id="b3">?</div>
+            <div class='ball ball4' id="b4">?</div>
+        </div>
+
+        <script>
+
+        lotto = [];
+        while (lotto.length < 4) {
+            var num = parseInt(Math.random() * 10);
+            if (lotto.indexOf(num) == -1) {
+                lotto.push(num);
+            }
+        }
+
+        var cnt = 0;
+        console.log(lotto)
+        
+        var strike = 0;
+        var ball = 0;
+        function answer() {
+            const lottostr = lotto.join('')
+            console.log(lottostr)
+        
+            var answerlist = document.getElementById('myanswer').value
+
+            if (answerlist.length == 4) {
+                cnt+=1
+                if (answerlist == lottostr) {
+                    document.getElementById('info').innerHTML = "HOME RUN!!!!!! You enter " + cnt + " times"
+                    document.getElementById('b1').innerHTML = lottostr[0];
+                    document.getElementById('b2').innerHTML = lottostr[1];
+                    document.getElementById('b3').innerHTML = lottostr[2];
+                    document.getElementById('b4').innerHTML = lottostr[3];
+                }
+                else {
+                    for (var i = 0; i < 4; i += 1) {
+                        if (answerlist[i] === lottostr[i]) {
+                            strike += 1;
+                        } else if (lottostr.indexOf(answerlist[i]) > -1) {
+                            ball += 1;
+                        }
+                    }
+                    var newp = document.createElement('p');
+                    newp.innerHTML = answerlist.split('').join(' ') + " : " + strike + " strike " + ball  + " ball " 
+                    document.body.append(newp)
+                    document.getElementById('myanswer').value = null;
+                    ball=0
+                    strike=0
+                }
+            }
+        }
+        </script>
+    </body>
+
+</html>
