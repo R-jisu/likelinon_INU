@@ -3,6 +3,16 @@ body {
     margin: 20px;
 }
 
+#mainbox{
+    padding: 10px;
+    width: 700px;
+    height: 100%;
+    border: black none 1px;
+    box-shadow: 1px 2px 3px 3px rgba(0,0,0,0.1);
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .ball {
     margin-top: 20px;
     width: 60px;
