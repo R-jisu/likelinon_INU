@@ -8,18 +8,19 @@
     </head>
 
     <body>
-        <h1 id="info">랜덤 번호 4자리가 생성되었습니다. (범위 0~9)</h1>
-        <form action="">
-            <input type="text" id="myanswer" onkeyup="answer();">
-        </form>
+        <div id="mainbox">
+            <h1 id="info">랜덤 번호 4자리가 생성되었습니다. (범위 0~9)</h1>
+            <form action="">
+                <input type="text" id="myanswer" onkeyup="answer();">
+            </form>
 
-        <div class="wrap">
-            <div class='ball ball1' id="b1">?</div>
-            <div class='ball ball2' id="b2">?</div>
-            <div class='ball ball3' id="b3">?</div>
-            <div class='ball ball4' id="b4">?</div>
+            <div class="wrap">
+                <div class='ball ball1' id="b1">?</div>
+                <div class='ball ball2' id="b2">?</div>
+                <div class='ball ball3' id="b3">?</div>
+                <div class='ball ball4' id="b4">?</div>
+            </div>
         </div>
-
         <script>
 
         lotto = [];
@@ -40,6 +41,7 @@
             console.log(lottostr)
         
             var answerlist = document.getElementById('myanswer').value
+            var addressContainer = document.getElementById("mainbox")
 
             if (answerlist.length == 4) {
                 cnt+=1
@@ -60,7 +62,8 @@
                     }
                     var newp = document.createElement('p');
                     newp.innerHTML = answerlist.split('').join(' ') + " : " + strike + " strike " + ball  + " ball " 
-                    document.body.append(newp)
+                    document.getElementById('mainbox').append(newp)
+                    //document.body.append(newp)
                     document.getElementById('myanswer').value = null;
                     ball=0
                     strike=0
