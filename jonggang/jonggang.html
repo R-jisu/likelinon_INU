@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>개종강계산기</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Nanum+Pen+Script&display=swap');
+
+        * {
+            font-family: Montserrat;
+        }
+
+        .mainbox {
+            border: 1px solid gray;
+            box-shadow: 10px 10px 2px 1px rgba(127, 126, 78, 0.2);
+            margin-left: auto;
+            margin-right: auto;
+            width: 60%;
+            height: 60%;
+            text-align: center;
+        }
+
+        .end {
+            width: 100%;
+            height: 100%;
+        }
+        
+        #jonggang_img {
+            padding-top: 15px;
+        }
+
+        .dday {
+            width: 100%;
+            height: 100%;
+            line-height: 50px;
+        }
+
+        .wrap {
+            font-size: large;
+            font-weight: 900;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainbox">
+        <h1 id="header">종.강.종.강 돌을 던지자</h1>
+        <h3 id="end-day">2022 1학기 종강</h3>
+
+        <img id="jonggang_img" src="jonggang.png" alt="jonggang">
+
+        <div class="wrap">
+            <p id="left-day" class="dday">D-0</p>
+            <p id="day" class="end"><small>2022.06.22</small></p>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        let toggle = 0;
+        var now = new Date();
+        var jonggang = new Date('2022-06-22');
+        var gaegang = new Date('2022-09-01');
+
+        var timediff = jonggang.getTime()-now.getTime();
+        var dday = Math.floor(timediff/(1000*60*60*24)+1);
+
+        var timediff2 = gaegang.getTime()-now.getTime();
+        var dday2 = Math.floor(timediff2/(1000*60*60*24)+1);
+
+        $('#left-day').text('D-'+dday)
+
+        $('#jonggang_img').click(function() {
+            if (toggle==0) {
+                $('#header').text('개.강.개.강 돌을 던지자')
+                $('#jonggang_img').attr("src", "gaeang.png");
+                $('#end-day').text('2022 2학기 개강')
+                $('#left-day').text('D-'+dday2)
+                $('#day').text('2022.09.01')
+                toggle=1
+            }
+            else{
+                $('#header').text('종.강.종.강 돌을 던지자')
+                $('#jonggang_img').attr("src", "jonggang.png");
+                $('#end-day').text('2022 1학기 종강')
+                $('#left-day').text('D-'+dday)
+                $('#day').text('2022.06.22')
+                toggle=0
+            }
+        })
+        
+    </script>
+</body>
+
+</html>
